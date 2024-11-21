@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider_basics/screens/second_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
+        centerTitle: true,
+        title: Text(
+          "Home Page",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -34,7 +42,28 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-          )
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all(Colors.blue),
+              padding: WidgetStateProperty.all(EdgeInsets.all(18)),
+              textStyle: WidgetStateProperty.all(
+                TextStyle(fontSize: 18),
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SecondPage(
+                    numbers: numbers,
+                  ),
+                ),
+              );
+            },
+            child: Text(
+              "Second Screen",
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
